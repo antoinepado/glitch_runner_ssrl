@@ -1,0 +1,157 @@
+/********************************************************************************
+* 
+* McStas, neutron ray-tracing package
+*         Copyright (C) 1997-2008, All rights reserved
+*         Risoe National Laboratory, Roskilde, Denmark
+*         Institut Laue Langevin, Grenoble, France
+* 
+* This file was written by McStasScript, which is a 
+* python based McStas instrument generator written by 
+* Mads Bertelsen in 2019 while employed at the 
+* European Spallation Source Data Management and 
+* Software Centre
+* 
+* Instrument mcstasscript_bl_11_2_not_white_src
+* 
+* %Identification
+* Written by: Python McXtrace Instrument Generator
+* Date: 00:46:41 on January 22, 2023
+* Origin: ESS DMSC
+* %INSTRUMENT_SITE: Generated_instruments
+* 
+* 
+* %Parameters
+* 
+* %End 
+********************************************************************************/
+
+DEFINE INSTRUMENT mcstasscript_bl_11_2_not_white_src (
+Etohit = 4500, 
+h = 2, 
+k = 2, 
+l = 0 
+)
+
+DECLARE 
+%{
+double n;
+double calculated_angle;
+%}
+
+INITIALIZE 
+%{
+// Start of initialize for generated mcstasscript_bl_11_2_not_white_src
+n = h*h + k*k + l*l;
+fprintf(stdout,"n %g \n", n);
+calculated_angle=RAD2DEG*asin(12398.4198*sqrt(n)/(2*5.43096*Etohit));
+fprintf(stdout,"Energy eV %g / Angle deg %g \n", Etohit, calculated_angle);
+%}
+
+TRACE 
+COMPONENT Origin = Progress_bar()
+AT (0,0,0) ABSOLUTE
+
+COMPONENT src = Wiggler(
+ E0 = Etohit/1000, dE = 0.1,
+ Ee = 2.4, Ie = 0.1,
+ B = 2, Nper = 13,
+ length = 0.175, focus_xw = 2*tan(0.0015/2),
+ focus_yh = 2*tan(0.00015/2))
+AT (0,0,0) RELATIVE PREVIOUS
+
+COMPONENT slit_mono = Slit(
+ xwidth = 0.005, yheight = 0.0003)
+AT (0,0,17.520000000000003) RELATIVE PREVIOUS
+
+COMPONENT mono_loc = Arm()
+AT (0,0,0.08) RELATIVE PREVIOUS
+
+COMPONENT ray_position = Arm()
+AT (0,0,0) RELATIVE PREVIOUS
+
+COMPONENT mono_rotation = Arm()
+AT (0,0,0) RELATIVE PREVIOUS
+ROTATED (-90,0,0) RELATIVE PREVIOUS
+
+COMPONENT mono_rotation_phi_90 = Arm()
+AT (0,0,0) RELATIVE PREVIOUS
+ROTATED (0,0,-90) RELATIVE PREVIOUS
+
+COMPONENT center_of_rotation = Arm()
+AT (0,0,0.004) RELATIVE PREVIOUS
+ROTATED (0,-calculated_angle,0) RELATIVE PREVIOUS
+
+COMPONENT bragg_crystal_no_split = Single_crystal(
+ reflections = "Si.lau", material = "Si.txt",
+ xwidth = 0.0762, yheight = 0.041275,
+ zdepth = 0.001, mosaic = 1,
+ barns = 1, ax = -2.21718,
+ ay = -3.13557, az = 3.84027,
+ bx = 2.21718, by = 3.13557,
+ bz = 3.84027, cx = -4.43436,
+ cy = 3.13557, cz = 0,
+ p_transmit = -1, order = 1)
+AT (-0.0381,0,-0.0035) RELATIVE PREVIOUS
+ROTATED (0,0,0) RELATIVE PREVIOUS
+EXTEND %{
+if(!SCATTERED) ABSORB;
+%}
+
+COMPONENT mono_loc_2 = Arm()
+AT (0.047625,0,0.0035) RELATIVE center_of_rotation
+
+COMPONENT detuning_rotation = Arm()
+AT (0,0,0) RELATIVE PREVIOUS
+ROTATED (0,0,0) RELATIVE PREVIOUS
+
+COMPONENT bragg_crystal_two_no_split = Single_crystal(
+ reflections = "Si.lau", material = "Si.txt",
+ xwidth = 0.09525, yheight = 0.041275,
+ zdepth = 0.001, mosaic = 1,
+ barns = 1, ax = -2.21718,
+ ay = -3.13557, az = 3.84027,
+ bx = 2.21718, by = 3.13557,
+ bz = 3.84027, cx = -4.43436,
+ cy = 3.13557, cz = 0,
+ p_transmit = -1, order = 1)
+AT (0,0,0) RELATIVE PREVIOUS
+ROTATED (0,0,0) RELATIVE PREVIOUS
+EXTEND %{
+if(!SCATTERED) ABSORB;
+if(!SCATTERED) ABSORB;
+%}
+
+COMPONENT EnergyMonitor_first = Monitor_nD(
+ xwidth = 0.0044, yheight = 0.0044,
+ bins = 500, min = 4,
+ max = 40, restore_xray = 1,
+ options = "energy", filename = "EnergyMonitor_first")
+AT (0,0.006*sin(DEG2RAD*2*calculated_angle)/sin(DEG2RAD*calculated_angle),1.0) RELATIVE ray_position
+
+COMPONENT EnergyMonitor_second = Monitor_nD(
+ xwidth = 0.0028, yheight = 0.0028,
+ bins = 500, min = 4,
+ max = 40, restore_xray = 1,
+ options = "energy", filename = "EnergyMonitor_second")
+AT (0,0,0) RELATIVE PREVIOUS
+
+COMPONENT EnergyMonitor_third = Monitor_nD(
+ xwidth = 0.01, yheight = 0.01,
+ bins = 500, min = 4,
+ max = 40, restore_xray = 1,
+ options = "energy", filename = "EnergyMonitor_third")
+AT (0,0,10) RELATIVE PREVIOUS
+
+COMPONENT EnergyMonitor_fourth = Monitor_nD(
+ xwidth = 0.0043, yheight = 0.0043,
+ bins = 500, min = 4,
+ max = 40, restore_xray = 1,
+ options = "energy", filename = "EnergyMonitor_fourth")
+AT (0,0,0) RELATIVE PREVIOUS
+
+FINALLY 
+%{
+// Start of finally for generated mcstasscript_bl_11_2_not_white_src
+%}
+
+END

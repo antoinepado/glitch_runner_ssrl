@@ -1,0 +1,111 @@
+######################## Si 220 PHI 90, rocking curves fwhm
+for the first monitor, data is available for the other monitors too
+########  4.5  5.5keV
+fwhm: 0.03715649
+25 pts, 0.1 deg, 4500 eV.
+percentage_chosen: 125%
+
+########  5.5  6.5keV
+fwhm: 0.03747724
+25 pts, 0.1 deg, 5500 eV.
+percentage_chosen: 120%
+
+########  6.5  7.5keV 
+fwhm: 0.03752225
+25 pts, 0.1 deg, 6500 eV.
+percentage_chosen: 120%
+
+########  7.5  8.5keV 
+fwhm: 0.03738717
+25 pts, 0.1 deg, 7500 eV.
+percentage_chosen: 110%
+
+########  8.5  9.5keV
+fwhm: 0.03674909
+25 pts, 0.075 deg, 8500 eV.
+percentage_chosen: 120%
+
+########  9.5  10.5keV
+fwhm: 0.03866489
+25 pts, 0.075 deg, 9500 eV.
+percentage_chosen: 100%
+
+######## 10.5 11.5keV
+fwhm: 0.03762425
+25 pts, 0.075 deg, 10.5 keV.
+percentage_chosen: 110%
+
+######## 11.5 12.5keV
+fwhm: 0.04178204
+25 pts, 0.075 deg, 11.5 keV.
+percentage_chosen: 105%
+
+######## 12.5 13.5keV
+fwhm: 0.04122438
+25 pts, 0.075 deg, 12.5 keV.
+percentage_chosen: 100%
+
+######## 13.5 14.5keV
+fwhm: 0.0396435
+25 pts, 0.075 deg, 13.5 keV.
+percentage_chosen: 70%
+
+######## 14.5 15.5keV
+fwhm: 0.04445152
+25 pts, 0.075 deg, 14.5 keV.
+percentage_chosen: 80%
+
+######## 15.5 16.5keV
+fwhm: 0.04547342
+25 pts, 0.075 deg, 15.5 keV.
+percentage_chosen: 90%
+
+######## 16.5 17.5keV
+fwhm: 0.03583681
+25 pts, 0.075 deg, 16.5 keV.
+percentage_chosen: 100%
+
+######## 17.5 18.5keV
+fwhm: 0.04149874
+25 pts, 0.075 deg, 17.5 keV.
+percentage_chosen: 90%
+
+######## 18.5 19.5keV
+fwhm: 0.04767514
+25 pts, 0.075 deg, 18.5 keV.
+percentage_chosen: 80%
+
+######## 19.5 20.5keV
+fwhm: 0.04780912
+25 pts, 0.075 deg, 19.5 keV.
+percentage_chosen: 80%
+
+######## 20.5 21.5keV 
+######## No need to detune from here on out, because the source goes from 4 to 40 keV 
+fwhm: 0.05183439
+25 pts, 0.075 deg, 20.5 keV.
+
+######## 21.5 22.5keV
+fwhm: 0.04646749
+25 pts, 0.075 deg, 21.5 keV.
+
+######## 22.5 23.5keV
+fwhm: 0.04886432
+25 pts, 0.075 deg, 22.5 keV.
+
+######## 23.5 24.5keV
+fwhm: 0.04761375
+25 pts, 0.075 deg, 23.5 keV.
+
+######## 24.5 25.5keV
+fwhm: 0.04264673
+25 pts, 0.075 deg, 24.5 keV.
+
+######## 25.5 26.5keV
+fwhm: 0.04724266
+25 pts, 0.075 deg, 25.5 keV.
+
+######## 26.5 27keV
+fwhm: 0.04463984
+25 pts, 0.075 deg, 26.5 keV.
+
